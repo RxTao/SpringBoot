@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.TestDao">
+    <!-- 根据主键查询-->
+    <select id="getById" resultType="com.example.demo.model.Test" parameterType="java.lang.Integer" >
+        select  *
+        from test
+        where id = #{id}
+    </select>
+
+    <insert id="getinsertList"  useGeneratedKeys="true" keyProperty="id">
+        insert into test
+        (magic_Id,first_Name,last_Name)
+        values
+        <foreach collection="list" item="test" separator=",">
+            (#{test.magicId},#{test.firstName},#{test.lastName})
+        </foreach>
+    </insert>
+
+    <select id="batchselect" resultType="com.example.demo.model.Test">
+        select  * from test where id in 
+        <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="getmap" resultType="map">
+        select  id,magic_Id,first_Name,last_Name from test where id = #{id}
+    </select>
+
+</mapper>
