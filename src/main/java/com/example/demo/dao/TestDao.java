@@ -31,4 +31,6 @@ public interface TestDao extends Mapper<Test> {
     List<Test> batchselect (List<Long> list);
 
     Map<String,Object> getmap(Integer id);
+
+
 }

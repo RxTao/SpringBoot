@@ -62,7 +62,7 @@ public class UserController {
         longList.add(3L);
         List<Test> testList1 = testService.batchselect(longList);
         map.put("test", testList1);
-//        Test test = testService.getById(id);
+        Test test = testService.getById(id);
 //        if (test != null) {
 //            List<Test> testuser = testDao.selectAll();
 //            map.put("test", testuser);
